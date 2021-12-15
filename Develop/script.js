@@ -14,13 +14,26 @@ function writePassword() {
   var confirmNumber = confirm("Would you like your password to contain numbers?")
   var confirmSpecial = confirm("Would you like your password to contain special characters? (e.g. !?=%$)")
   var confirmAmount = prompt("How many characters would you like your password to have?  Please select no less than 8 and no more than 128.")
+  
+  
+  console.log(confirmAmount);
 
-  if (confirmAmount = [uppercase, lowercase, specialCharacters]){
-    alert("Please do not type non-numerical characters in this field! Please try again.")
+  confirmAmount = parseInt(confirmAmount);
+
+  if (isNaN(confirmAmount)) {
+    alert("Please put in a number");
     return false;
   }
 
-  if (confirmUpper === true){
+ if (confirmAmount < 8) {
+    alert("Please put in a larger number.");
+    return false;
+  } else if (confirmAmount > 128) {
+    alert("Please put in a smaller number.");
+    return false;
+  }
+
+  if (confirmUpper){
     password = Math.floor(Math.random () * 1)
   }
   if (confirmLower === true){
@@ -34,7 +47,7 @@ function writePassword() {
   }
 
 
-  var password = generatePassword();
+  var password = generatePassword(confirmUpper && confirmLower && confirmNumber && confirmSpecial);
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
