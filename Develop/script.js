@@ -3,7 +3,7 @@ var generateBtn = document.querySelector("#generate");
 var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var numerals = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-var specialCharacters = ["!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", ">", "=", "?", "@", "[", "]", "^", "_", "{", "}", "`", "~", "|"]
+var specialCharacters = ["!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", ">", "=", "?", "@", "[", "]", "^", "_", "{", "}", "`", "~", "|"];
 var passwordMin = 8;
 var passwordMax = 128;
 
@@ -22,27 +22,28 @@ function generatePassword() {
   console.log(userObject);
   var possiblePassword = [];
   var newPassword = [];
-  if(userObject.upperConfirm === true) {
+  if (userObject.upperConfirm === true) {
     possiblePassword = possiblePassword.concat(uppercase)
     console.log("inside upper")
   }
-  if(userObject.lowerConfirm === true) {
+  if (userObject.lowerConfirm === true) {
     possiblePassword = possiblePassword.concat(lowercase)
   }
-  if(userObject.numberConfirm === true) {
+  if (userObject.numberConfirm === true) {
     possiblePassword = possiblePassword.concat(numerals)
   }
-  if(userObject.specialConfirm === true) {
+  if (userObject.specialConfirm === true) {
     possiblePassword = possiblePassword.concat(specialCharacters)
   }
   console.log(possiblePassword);
-  for(var i = 0; i < userObject.amount; i++) {
+  for (var i = 0; i < userObject.amount; i++) {
     var randomNumber = Math.floor(Math.random() * (possiblePassword.length));
     newPassword.push(possiblePassword[randomNumber]);
     console.log(randomNumber);
   }
+  var noCommas = newPassword.join("");
   console.log(newPassword);
-  return newPassword;
+  return noCommas;
 }
 
 function confirmFunction() {
