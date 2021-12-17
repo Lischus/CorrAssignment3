@@ -55,6 +55,7 @@ function confirmFunction() {
 
 
   console.log(confirmAmount);
+  console.log(confirmAmount);
 
   if (isNaN(confirmAmount)) {
     alert("Please put in a number");
